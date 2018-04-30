@@ -1,6 +1,10 @@
 # yarn
 
-[![Build Status](https://travis-ci.org/infOpen/ansible-role-yarn.svg?branch=master)](https://travis-ci.org/infOpen/ansible-role-yarn)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-yarn/master.svg?label=travis_master)](https://travis-ci.org/infOpen/ansible-role-yarn)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-yarn/develop.svg?label=travis_develop)](https://travis-ci.org/infOpen/ansible-role-yarn)
+[![Updates](https://pyup.io/repos/github/infOpen/ansible-role-yarn/shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-yarn/)
+[![Python 3](https://pyup.io/repos/github/infOpen/ansible-role-yarn/python-3-shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-yarn/)
+[![Ansible Role](https://img.shields.io/ansible/role/25386.svg)](https://galaxy.ansible.com/infOpen/yarn/)
 
 Install yarn package.
 
