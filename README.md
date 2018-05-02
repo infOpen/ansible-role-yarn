@@ -8,6 +8,8 @@
 
 Install yarn package.
 
+> This role not install NodeJS by default, set *yarn_repository_install_recommends* to *True* to change that
+
 ## Requirements
 
 This role requires Ansible 2.2 or higher,
@@ -44,6 +46,36 @@ $ tox
 ### Default role variables
 
 ``` yaml
+# Packages and repositories management
+yarn_packages: "{{ _yarn_packages }}"
+yarn_repository_cache_valid_time: 3600
+yarn_repository_filename: 'yarn'
+yarn_repository_install_recommends: False
+yarn_repositories_keys: "{{ _yarn_repositories_keys }}"
+yarn_repositories: "{{ _yarn_repositories }}"
+yarn_system_dependencies: "{{ _yarn_system_dependencies }}"
+yarn_version_type: 'stable'  # Possible choices: stable, rc, nightly
+```
+
+### Debian family variables
+
+``` yaml
+# Repositories management
+_yarn_repositories:
+  - repo: "deb https://dl.yarnpkg.com/debian/ {{ yarn_version_type }} main"
+_yarn_repositories_keys:
+  - url: "https://dl.yarnpkg.com/debian/pubkey.gpg"
+
+# Packages management
+_yarn_packages:
+  - name: 'yarn'
+
+# System dependencies
+_yarn_system_dependencies:
+  - name: 'apt-transport-https'
+    state: 'present'
+  - name: 'ca-certificates'
+    state: 'present'
 ```
 
 ## Dependencies

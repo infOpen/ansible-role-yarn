@@ -1,0 +1,37 @@
+---
+
+# Debian OS family installation tasks
+
+- name: 'INSTALL | APT | Install system dependencies packages'
+  apt:
+    name: "{{ item.name }}"
+    update_cache: True
+    cache_valid_time: "{{ yarn_repository_cache_valid_time }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ yarn_system_dependencies }}"
+
+
+- name: 'INSTALL | APT | Manage repository key'
+  apt_key:
+    url: "{{ item.url }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ yarn_repositories_keys }}"
+
+
+- name: 'INSTALL | APT | Install repository'
+  apt_repository:
+    repo: "{{ item.repo }}"
+    filename: "{{ yarn_repository_filename }}"
+    update_cache: True
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ yarn_repositories }}"
+
+
+- name: 'INSTALL | APT | Install packages'
+  apt:
+    name: "{{ item.name }}"
+    update_cache: True
+    cache_valid_time: "{{ yarn_repository_cache_valid_time }}"
+    install_recommends: "{{ yarn_repository_install_recommends }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ yarn_packages }}"

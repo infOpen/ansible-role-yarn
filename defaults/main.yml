@@ -1,3 +1,13 @@
 ---
 
 # Defaults vars file for yarn role
+
+# Packages and repositories management
+yarn_packages: "{{ _yarn_packages }}"
+yarn_repository_cache_valid_time: 3600
+yarn_repository_filename: 'yarn'
+yarn_repository_install_recommends: False
+yarn_repositories_keys: "{{ _yarn_repositories_keys }}"
+yarn_repositories: "{{ _yarn_repositories }}"
+yarn_system_dependencies: "{{ _yarn_system_dependencies }}"
+yarn_version_type: 'stable'  # Possible choices: stable, rc, nightly
