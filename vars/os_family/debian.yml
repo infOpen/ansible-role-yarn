@@ -1,0 +1,20 @@
+---
+
+# Debian family variables
+
+# Repositories management
+_yarn_repositories:
+  - repo: "deb https://dl.yarnpkg.com/debian/ {{ yarn_version_type }} main"
+_yarn_repositories_keys:
+  - url: "https://dl.yarnpkg.com/debian/pubkey.gpg"
+
+# Packages management
+_yarn_packages:
+  - name: 'yarn'
+
+# System dependencies
+_yarn_system_dependencies:
+  - name: 'apt-transport-https'
+    state: 'present'
+  - name: 'ca-certificates'
+    state: 'present'
